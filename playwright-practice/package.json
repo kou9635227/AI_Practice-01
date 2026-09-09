@@ -1,0 +1,19 @@
+{
+  "name": "ypd-docker-playwright",
+  "version": "1.0.0",
+  "description": "# これは何? 株式会社ヤポドゥの playwright MCP のハンズオン記事で使用する、Playwright の Docker イメージです。",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^26.4.1"
+  }
+}

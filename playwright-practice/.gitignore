@@ -1,0 +1,7 @@
+.env
+node_modules/
+playwright-report/
+test-results/
+*.log
+.playwright-mcp/
+scenario/page-2026-08-22T01-51-47-184Z.yml
