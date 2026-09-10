@@ -1,7 +1,7 @@
 {
   "name": "ypd-docker-playwright",
   "version": "1.0.0",
-  "description": "# これは何? 株式会社ヤポドゥの playwright MCP のハンズオン記事で使用する、Playwright の Docker イメージです。",
+  "description": "Playwright/TypeScriptによるE2Eテスト自動化の学習用プロジェクト",
   "main": "index.js",
   "directories": {
     "test": "tests"

@@ -1,0 +1,27 @@
+services:
+  ypd-playwright-mcp:
+    build: 
+      context: ./
+      dockerfile: Dockerfile 
+    env_file:
+      - .env
+    volumes:
+        - ./.playwright-mcp:/var/scenario/.playwright-mcp
+        #- ./scenario:/var/scenario
+        # WSL2 でブラウザを表示するために必要 launch(headless=True) の際は不要のため、環境変数は未指定にする
+        - ${X11_UNIX_PATH}:/tmp/.X11-unix
+        - ${WSLG_PATH}:/mnt/wslg
+    tty: true
+    environment:
+        # - HEADLESS=True # headless=Trueの際はコメントアウトを外す
+        - MCP_PORT=9876
+        # WSL2 でブラウザを表示するために必要 launch(headless=True) の際は不要
+        - DISPLAY=:0
+        - WAYLAND_DISPLAY=wayland-0
+        - XDG_RUNTIME_DIR=/mnt/wslg/runtime-dir
+        - PULSE_SERVER=unix:/mnt/wslg/PulseServer
+    ports:
+      - "9876:9876"        
+#    entrypoint: >
+        #sh -c "
+        #cd /var/scenario &&
