@@ -1,4 +1,5 @@
 import { Page, Locator } from '@playwright/test';
+import { CheckoutStepTwoPage } from './CheckoutStepTwo';
 
 export class CheckoutStepOnePage {
   readonly page: Page;
@@ -21,7 +22,16 @@ export class CheckoutStepOnePage {
     await this.zipPostalCode.fill(zipPostalCode);
   }
 
-  async continue() {
+  /** First Name / Last Name / Zip/Postal Codeを入力 */
+  async fillInfo(firstName: string, lastName: string, postalCode: string): Promise<void> {
+    await this.firstName.fill(firstName);
+    await this.lastName.fill(lastName);
+    await this.zipPostalCode.fill(postalCode);
+  }
+
+  /** 「Continue」をクリックし、CheckoutStepTwoPageを返す */
+  async continue(): Promise<CheckoutStepTwoPage> {
     await this.continueButton.click();
+    return new CheckoutStepTwoPage(this.page);
   }
 }

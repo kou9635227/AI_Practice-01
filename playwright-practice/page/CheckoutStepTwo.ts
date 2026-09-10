@@ -1,4 +1,5 @@
 import { Page, Locator } from '@playwright/test';
+import { CheckoutComplete } from './CheckoutComplete';
 
 export class CheckoutStepTwoPage {
   readonly page: Page;
@@ -9,7 +10,14 @@ export class CheckoutStepTwoPage {
     this.finishButton = page.getByRole('button', { name: 'Finish' });
   }
 
-  async finish() {
+  /** 「Checkout: Overview」見出し要素を返す */
+  getHeading(): Locator {
+    return this.page.getByTestId('title');
+  }
+
+  /** 「Finish」をクリックし、CheckoutCompleteを返す */
+  async finish(): Promise<CheckoutComplete> {
     await this.finishButton.click();
+    return new CheckoutComplete(this.page);
   }
 }
